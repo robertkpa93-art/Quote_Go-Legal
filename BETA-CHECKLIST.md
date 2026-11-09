@@ -11,8 +11,8 @@ Stan roboczy: 9 listopada 2026 r. Dokument techniczny dla operatora, **nie zast�
 - [x] W poprzednim odczycie Supabase sześć podstawowych tabel miało włączony RLS.
 
 ## Do sprawdzenia przed zaproszeniem
-- [ ] Test usunięcia osobnego konta: zalogowanie, fikcyjny klient, fikcyjna wycena, usunięcie, odrzucenie ponownego logowania.
-- [ ] Odczyt kontrolny w Supabase: brak rekordu Auth oraz danych konta we wszystkich sześciu tabelach. Nie wpisywać haseł ani tokenów do SQL.
+- [x] Test usunięcia osobnego konta z aplikacji: komunikat sukcesu i powrót do trybu demonstracyjnego (potwierdzone zdjęciem 09.11.2026). Ponowne logowanie usuniętym kontem nie było odrębnie testowane.
+- [x] Kontrola Supabase 09.11.2026: operator potwierdził brak konta w Authentication → Users; zapytanie LEFT JOIN do auth.users wykazało **0 osieroconych rekordów** we wszystkich sześciu tabelach podstawowych. To nie jest pełny audyt logów, backupów ani wszystkich danych przypisanych konkretnemu UUID.
 - [ ] Potwierdzenie regionu projektu Supabase, kategorii logów, zasad retencji i dostępnych umów dotyczących przetwarzania danych.
 - [ ] Ustalenie podstaw prawnych i ról wobec danych kont testerów oraz danych klientów fachowców; w becie używać wyłącznie fikcyjnych danych klientów.
 - [ ] Zatwierdzenie finalnej polityki i zasad testów, z datą wejścia w życie. Usunięcie oznaczenia „PROJEKT” dopiero po weryfikacji.
