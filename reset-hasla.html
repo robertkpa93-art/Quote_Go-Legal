@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Reset hasła — QuoteGo</title>
+<style>body{font-family:system-ui,sans-serif;background:#0b1020;color:white;margin:0;display:grid;min-height:100dvh;place-items:center;padding:20px;box-sizing:border-box}main{max-width:460px;width:100%;background:#17223b;padding:28px;border-radius:18px;box-sizing:border-box}h1{font-size:25px}p{line-height:1.6;color:#d2dbea}a{display:block;background:#2667e6;color:#fff;padding:16px;border-radius:12px;text-align:center;font-weight:700;text-decoration:none;margin:22px 0;overflow-wrap:anywhere}.note{font-size:13px}#error{display:none;color:#ffb4b4}</style>
+</head>
+<body>
+<main>
+<h1>Zmiana hasła QuoteGo</h1>
+<p>Kliknij poniżej, aby otworzyć aplikację i ustawić nowe hasło.</p>
+<a id="open" href="#">Otwórz QuoteGo</a>
+<p class="note">Jeśli telefon zapyta, czy otworzyć QuoteGo, potwierdź. Ta strona nie prosi o podanie hasła.</p>
+<p id="error">Ten link jest niekompletny. Wróć do aplikacji i poproś o nowy e-mail resetujący.</p>
+</main>
+<script>
+(function(){
+  var p=new URLSearchParams(location.search);
+  var token=p.get('token_hash');
+  var button=document.getElementById('open');
+  if(!token || !/^[a-zA-Z0-9_-]+$/.test(token)){
+    button.style.display='none';
+    document.getElementById('error').style.display='block';
+    return;
+  }
+  button.href='quotego-standalone://auth/callback?type=recovery&token_hash='+encodeURIComponent(token);
+  history.replaceState(null,'',location.pathname);
+})();
+</script>
+</body>
+</html>
